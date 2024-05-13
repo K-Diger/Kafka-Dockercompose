@@ -1,0 +1,20 @@
+server:
+  port: 8000
+
+spring:
+  r2dbc:
+    url: r2dbc:mssql://localhost:1433/test
+    username: SA
+    password: admin12#$
+    pool:
+      enabled: true
+      min-idle: 30
+      max-size: 30
+
+  kafka:
+    bootstrap-servers: 127.0.0.1:10000
+    producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: "TesT"
+

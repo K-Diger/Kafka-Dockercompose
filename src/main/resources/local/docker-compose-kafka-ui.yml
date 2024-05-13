@@ -1,0 +1,17 @@
+networks:
+  kafka-network:
+    name: kafka-network
+
+services:
+  KafkaWebUiService:
+    image: provectuslabs/kafka-ui:latest
+    restart: always
+    container_name: KafkaWebUiContainer
+    ports:
+      - '8080:8080'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=Local-Kraft-Cluster
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=host.docker.internal:9092,host.docker.internal:9192,host.docker.internal:9292
+      - DYNAMIC_CONFIG_ENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_TOPICAUDITENABLED=true
+      - KAFKA_CLUSTERS_0_AUDIT_CONSOLEAUDITENABLED=true
